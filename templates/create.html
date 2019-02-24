@@ -1,0 +1,46 @@
+  <!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+    <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <style>
+            input,textarea
+            {
+                width: 100%;
+            }
+     </style>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="jumbotron">
+            {% if form.instance.pk %}
+
+                <h1>Update Actor</h1>
+
+                <form method="post" enctype="multipart/form-data">  <!--this enctype image pupose we use that one-->
+                {% csrf_token %}
+                {{ form.as_p }}
+                    <input class="btn btn-success" type="submit" value="Update">
+                </form>
+
+            {% else %}
+
+                    <h1>Create Actor</h1>
+
+                    <form method="POST" enctype="multipart/form-data">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-warning" value="Create">
+            {% endif %}
+
+</form>
+</div>
+    </div>
+</body>
+{% endblock %}
+</html>
